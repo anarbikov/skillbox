@@ -1,7 +1,6 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    val zoo1 = NatureReserve()
+    zoo1.qtyOfAllAnimals()
+    zoo1.zooLifeCycle(5)
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
 }
