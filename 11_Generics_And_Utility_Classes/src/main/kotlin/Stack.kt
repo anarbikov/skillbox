@@ -1,12 +1,12 @@
 open class Stack <T> {
-    val stack = mutableListOf<T>()
+    internal val stack = mutableListOf<T>()
 
-    fun push(item:T) = stack.add(item)
-    fun pop ():T? {
+    internal fun push(item:T) = stack.add(item)
+    internal fun pop ():T? {
         return if (isEmpty()) null
         else stack.removeLast()
     }
-    fun isEmpty ():Boolean {
+    internal fun isEmpty ():Boolean {
         return stack.isEmpty()
     }
 

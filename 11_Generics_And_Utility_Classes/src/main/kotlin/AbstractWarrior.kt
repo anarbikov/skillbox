@@ -6,25 +6,29 @@ abstract class AbstractWarrior:Warrior {
     abstract var currentHealthPoints:Int
     abstract override var isKilled: Boolean
 
-     override fun attack(Warrior: Warrior) {
-         var damageDone:Int = 0
-         if (weapon.magazine.isEmpty()) weapon.reload()
-         else if (!weapon.magazine.isEmpty()) {
-             var bullets:MutableList<Ammo> = weapon.getBulletFromMagazine()
+     override fun attack(attacker: AbstractWarrior, defender:AbstractWarrior) {
+         var damageDone = 0
+         if (attacker.weapon.magazine.isEmpty()) {
+             attacker.weapon.reload()
+             println("<${attacker.javaClass.simpleName} is reloading the weapon>")
+         }
+         else {
+             val bullets:MutableList<Ammo> = attacker.weapon.getBulletFromMagazine()
              for (i in 0 until bullets.size){
-                 if (accuracyChance.chance(accuracyChance) && evasionChance.chance(evasionChance)) {
-                     damageDone += bullets[i].getDamage(bullets[i])
+                 if (attacker.accuracyChance.chance(attacker.accuracyChance) && !defender.evasionChance.chance(defender.evasionChance)) {
+                     damageDone += bullets[i].getDamagePerShot(bullets[i])
                  }
              }
-             Warrior.getDamage(damageDone)
-             bullets.removeAll(Ammo.values())
+             defender.getDamage(damageDone)
+             bullets.clear()
          }
      }
 
     override fun getDamage(damage: Int) {
-        if (currentHealthPoints > damage){
+        if (currentHealthPoints > damage && !isKilled){
             currentHealthPoints -= damage
             println("Damage: $damage, remaining enemy health: $currentHealthPoints")
+            println()
         }
         else {
             currentHealthPoints = 0

@@ -1,53 +1,22 @@
-import kotlin.concurrent.thread
 import kotlin.random.Random
 
-fun main(args: Array<String>) {
-    var a=Team()
-    var b = a.createTeam(5)
-    for (i in 0 until b.size)
-    println(b[i])
-    var c = a.createTeam(6)
-    println(c[0].currentHealthPoints)
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
-    b[0].attack(c[0])
+fun main() {
+    val a = Battle(5,5)
+    println(a.team1[0].weapon)
+    println(a.team1[1].weapon)
+    println(a.team1[2].weapon)
+    println(a.team1[3].weapon)
+    println(a.team1[4].weapon)
+
+
+    a.troopsProperties()
+    for (i in 1 until 50) {
+        if (!a.battleEnded) println("ROUND $i")
+        a.attackIteration()
+    }
 
 
 
-
-
-
-
-    println(c[0].currentHealthPoints)
-    println(b[0])
-    println(c[0])
 
 
 

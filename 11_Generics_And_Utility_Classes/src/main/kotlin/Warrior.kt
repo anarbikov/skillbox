@@ -2,6 +2,6 @@ interface Warrior {
     val isKilled:Boolean
     val evasionChance:Int
 
-    fun attack (Warrior:Warrior) {}
+    fun attack (attacker:AbstractWarrior,defender: AbstractWarrior){}
     fun getDamage (damage:Int) {}
 }

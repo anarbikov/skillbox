@@ -16,18 +16,15 @@ abstract class AbstractWeapon {
         }
     }
 
-    fun reload() {
+    internal fun reload() {
         for (i in 0 until maxBulletsInMagazine)
             magazine.push(createBullet())
     }
 
-    fun getBulletFromMagazine(): MutableList<Ammo> {
+    internal fun getBulletFromMagazine(): MutableList<Ammo> {
         val currentBullets = mutableListOf<Ammo>()
         for (i in 0 until fireType.shotsNumber) {
-            if (magazine.isEmpty()) {
-                println("Please, reload the magazine")
-                break
-            }
+            if (magazine.isEmpty()) break
             else {
                 currentBullets.add(magazine.stack[magazine.stack.lastIndex])
                 magazine.pop()
