@@ -1,9 +1,9 @@
 class Battle(team1Size:Int,team2Size:Int):BattleState() {
 
     private val team = Team()
-    var team1 = team.createTeam(team1Size)
+    private var team1 = team.createTeam(team1Size)
     private var team2 = team.createTeam(team2Size)
-    var battleEnded = false
+    internal var battleEnded = false
 
     private fun getProgress() {
     for (i in 0 until team1.size) totalHealthTeam1 += team1[i].currentHealthPoints  //  total HP team1
