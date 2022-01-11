@@ -4,7 +4,7 @@ import java.math.BigInteger
 
 object Fibonacci {
     suspend fun take(sequenceNumber:Int):BigInteger {
-        yield()
+
         var b = 1.toBigInteger()
         var c = 1.toBigInteger()
         var sum = 0.toBigInteger()
@@ -13,6 +13,7 @@ object Fibonacci {
             in 2..3 -> sum = 1.toBigInteger()
             in 4..sequenceNumber -> {
                 for (i in 4..sequenceNumber) {
+                    yield()
                     sum = b + c
                     b = c
                     c = sum
