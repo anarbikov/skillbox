@@ -20,13 +20,14 @@ suspend fun main():Unit = runBlocking {
                 println("Fibo(999999) - ${Fibonacci.take(999999)}")  //TimeoutCancellationException
             }
         } catch (e: TimeoutCancellationException) {
-            println("Skipped too long coroutine (2 second)")
+            println("\nSkipped too long coroutine (2 second)\n")
         }
     }
     val ii = launch { println("${Fibonacci.take(120)} - Fibo(120)") }
 
     val allJobs: MutableList<Job> = mutableListOf(a, b, c, d, e, f, g, h, ii)
     var activeJobs = 0
+    async {
     launch {
         delay(20)
         for (iteration in 0 until 100000){
@@ -38,6 +39,7 @@ suspend fun main():Unit = runBlocking {
         if (activeJobs > 0) print(".") else break
         delay(50)
         activeJobs = 0
+    }
     }
     }
 }
